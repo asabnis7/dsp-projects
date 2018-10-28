@@ -200,33 +200,34 @@ void qTransform::graphSpectrum()
 {
     double mag = 0.0;
 
-    std::cout << "Spectrum ----------------" << std::endl;
+    std::cout << "\rSpectrum ----------------\n";
     for (int i = 0; i < (int)K; i++)
     {
         mag = cq[i].getMag();
 
         if (mag >= 0.0 && mag < 0.1)
-            std::cout << notes[i] << " *" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " *\n";
         else if (mag >= 0.1 && mag < 0.2)
-            std::cout << notes[i] << " **" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " **\n";
         else if (mag >= 0.2 && mag < 0.3)
-            std::cout << notes[i] << " ***" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " ***\n";
         else if (mag >= 0.3 && mag < 0.4)
-            std::cout << notes[i] << " ****" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " ****\n";
         else if (mag >= 0.4 && mag < 0.5)
-            std::cout << notes[i] << " *****" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " *****\n";
         else if (mag >= 0.5 && mag < 0.6)
-            std::cout << notes[i] << " ******" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " ******\n";
         else if (mag >= 0.6 && mag < 0.7)
-            std::cout << notes[i] << " ******" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " *******\n";
         else if (mag >= 0.7 && mag < 0.8)
-            std::cout << notes[i] << " *******" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " ********\n";
         else if (mag >= 0.8 && mag < 0.9)
-            std::cout << notes[i] << " ********" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " *********\n";
         else if (mag >= 0.9 && mag < 1.0)
-            std::cout << notes[i] << " *********" << std::endl;
-        else std::cout << notes[i] << " **********" << std::endl;
+            std::cout << "\r" << std::setw(3) << notes[i] << " **********\n";
+        else 
+            std::cout << "\r" << std::setw(3) << notes[i] << " ***********\n";
     }
-    std::cout << "-------------------------" << std::endl;
+    std::cout << "\r-------------------------\n";
 }
 // End QFT implementation #####################################################
