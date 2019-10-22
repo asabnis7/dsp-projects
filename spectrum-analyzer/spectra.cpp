@@ -125,14 +125,10 @@ Complex & operator*(const double lhs, Complex& rhs)
 
 // Hamming window function ####################################################
 
-double * hamming(int length)
+void hamming(int length, double * window)
 {
-    double * window = new double[length];
-
     for(double n = 0; n < length; n++) 
         window[int(n)] = 0.54-0.46*cos(2*pi*(n/(length-1)));
-
-    return window;
 }
 
 // End hamming ################################################################
@@ -163,15 +159,18 @@ int qTransform::getN() const { return N; }
 void qTransform::QFT(double * signal)
 {
     clear();
+    double * window = NULL;
     for (double k = 0; k < (int)K; k++)
     {
         N = (Q*fs)/(fo*pow(2,(k/bins)));
-        double * window = hamming(N);
+        window = new double[N];
+        hamming(N, window);
         for (int n = 0; n < N; n++)
         {
             Complex ewt(-2*pi*Q*n/N);
             cq[(int)k] = cq[(int)k] + (signal[n]*(window[n]*ewt)/N);
         }
+        delete[] window;
     }
     cqNormalize();
 }
