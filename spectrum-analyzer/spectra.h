@@ -69,7 +69,7 @@ struct Complex
 
 
 // Hamming window function
-double * hamming(int length);
+void hamming(int length, double * window);
 
 
 // Structure for Constant-Q transform
